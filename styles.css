@@ -145,84 +145,76 @@ h3 {
 
 /* Hero Section */
 .hero {
-  padding: 80px 0 100px; /* Reduced top padding */
+  padding: 80px 0 100px;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  padding-top: 120px; /* Vertically align slightly above center */
   gap: 60px;
 }
 
 .hero-content {
   max-width: 580px;
+  z-index: 10;
 }
 
 h1 {
-  font-size: clamp(40px, 5vw, 64px); /* Reduced size */
+  font-size: clamp(32px, 5.5vw, 64px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.04em;
-  margin-bottom: 20px; /* Tighter margin */
+  margin-bottom: 24px;
 }
 
 .subtext {
   font-size: 19px;
+  line-height: 1.5;
   color: var(--text-muted);
-  max-width: 540px;
-  margin-bottom: 16px; /* Tighter margin */
-}
-
-.trust-line {
-  font-size: 14px;
-  color: var(--text-muted);
+  max-width: 500px;
   margin-bottom: 32px;
-  opacity: 0.7;
 }
 
 .cta-meta {
   font-size: 12px;
   color: var(--text-muted);
   margin-top: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  opacity: 0.5; /* Low opacity as requested */
+  letter-spacing: 0.02em;
 }
 
 .hero-visual {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 /* Hero Glow */
 .hero-visual::before {
   content: '';
   position: absolute;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 65%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 70%);
   z-index: 1;
+  top: -10%;
+  right: -10%;
   pointer-events: none;
 }
 
 .floating-ui {
   position: relative;
   width: 100%;
-  max-width: 440px; /* Reduced size by ~15% */
+  max-width: 520px;
   z-index: 2;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
 }
 
 .img-main {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   z-index: 10;
   position: relative;
   animation: float 5s ease-in-out infinite;
@@ -230,28 +222,78 @@ h1 {
 
 .img-chart, .img-options {
   position: absolute;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   z-index: 5;
-  filter: blur(1px); /* Subtle blur to emphasize main */
-  opacity: 0.7;
+  filter: blur(2px);
+  opacity: 0.5;
 }
 
 .img-chart {
-  top: 15%;
-  left: -25%;
-  width: 65%;
-  transform: rotate(-4deg);
+  top: 10%;
+  left: -20%;
+  width: 60%;
+  transform: rotate(-3deg);
   animation: float 6s ease-in-out infinite reverse;
 }
 
 .img-options {
-  bottom: 10%;
-  right: -20%;
-  width: 50%;
-  transform: rotate(4deg);
+  bottom: 5%;
+  right: -15%;
+  width: 45%;
+  transform: rotate(3deg);
   animation: float 4s ease-in-out infinite;
+}
+
+/* Tablet Refinement */
+@media (max-width: 1200px) {
+  .hero {
+    gap: 40px;
+  }
+  h1 {
+    font-size: clamp(32px, 4.5vw, 48px);
+  }
+}
+
+/* Mobile & Small Tablet Responsive */
+@media (max-width: 968px) {
+  .container {
+    padding: 0 20px; /* Reduced side padding */
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 80px;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    order: 1; /* Headline, Subtext, CTA first */
+  }
+
+  .hero-visual {
+    justify-content: center;
+    order: 2; /* Image last on mobile */
+    margin-top: 32px;
+  }
+
+  .floating-ui {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 40px); /* Mobile specific clamp */
+    margin-bottom: 20px;
+  }
+
+  .subtext {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+  }
 }
 
 /* How It Works (Sticky Side-Nav Refined) */
