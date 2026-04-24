@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BentoDB | Prevent Risks Before They Happen</title>
+    <meta name="description" content="Modern KPI dashboards for risk prevention and management. Live data, visual builder, and automated alerts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="container header">
+        <div class="logo">BentoDB</div>
+    </header>
+
+    <main>
+        <!-- 1. HERO -->
+        <section class="hero container visible" id="hero">
+            <div class="hero-content">
+                <h1>Catch risks early.<br>Act before they impact your business.</h1>
+                <p class="subtext">Connect your data, visualize key metrics, and spot unusual changes instantly.</p>
+                <p class="trust-line">Built for designers and teams working with live data</p>
+                <div class="hero-actions">
+                    <div class="btn-wrapper" title="Coming soon">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                    <p class="cta-meta">Works with any API</p>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-ui">
+                    <img src="home.png.png" alt="Bento Dashboard Overview" class="img-main">
+                    <img src="three-dot-options.jpeg" alt="Data Analytics Charts" class="img-chart">
+                    <img src="three-dot-options.jpeg" alt="Advanced UI Options" class="img-options">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HOW IT WORKS (STAKEHOLDER-FRIENDLY REFINEMENT) -->
+        <section class="how-it-works-sticky" id="flow">
+            <div class="section-header text-center container">
+                <h2>How it works</h2>
+            </div>
+            
+            <div class="sticky-container">
+                <div class="container sticky-wrapper">
+                    <!-- Left Menu -->
+                    <div class="sticky-left">
+                        <div class="sticky-menu">
+                            <a href="#step-1" class="menu-item active" data-step="1">
+                                <span class="dot"></span>
+                                <div class="menu-content">
+                                    <span class="title">Connect</span>
+                                    <p class="description">Add your API endpoint to bring in data.</p>
+                                </div>
+                            </a>
+                            <a href="#step-2" class="menu-item" data-step="2">
+                                <span class="dot"></span>
+                                <div class="menu-content">
+                                    <span class="title">Chart</span>
+                                    <p class="description">Select the type of chart for your data.</p>
+                                </div>
+                            </a>
+                            <a href="#step-3" class="menu-item" data-step="3">
+                                <span class="dot"></span>
+                                <div class="menu-content">
+                                    <span class="title">Mapping</span>
+                                    <p class="description">Choose which data fields to display.</p>
+                                </div>
+                            </a>
+                            <a href="#step-4" class="menu-item" data-step="4">
+                                <span class="dot"></span>
+                                <div class="menu-content">
+                                    <span class="title">Name</span>
+                                    <p class="description">Give your chart a clear name.</p>
+                                </div>
+                            </a>
+                            <a href="#step-5" class="menu-item" data-step="5">
+                                <span class="dot"></span>
+                                <div class="menu-content">
+                                    <span class="title">Dashboard</span>
+                                    <p class="description">Monitor all your live charts in one central dashboard.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Visuals -->
+                    <div class="sticky-right">
+                        <div class="visual-container">
+                            <img src="add-data-source.jpeg" alt="Connect" class="visual-img active" data-step="1">
+                            <img src="chart-type.jpeg" alt="Chart" class="visual-img" data-step="2">
+                            <img src="mapping.jpeg" alt="Mapping" class="visual-img" data-step="3">
+                            <img src="chart-name.jpeg" alt="Name" class="visual-img" data-step="4">
+                            <img src="three-dot-options.jpeg" alt="Dashboard" class="visual-img" data-step="5">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll Triggers -->
+                <div class="scroll-triggers">
+                    <div id="step-1" class="trigger" data-step="1"></div>
+                    <div id="step-2" class="trigger" data-step="2"></div>
+                    <div id="step-3" class="trigger" data-step="3"></div>
+                    <div id="step-4" class="trigger" data-step="4"></div>
+                    <div id="step-5" class="trigger" data-step="5"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. DASHBOARD PREVIEW (SINGLE IMPACT VIEW) -->
+        <section class="preview-section container" id="preview">
+            <div class="preview-header text-center">
+                <h2>Your dashboard, all in one place</h2>
+                <p class="subtext">View your data through clear charts and insights, all organized in a single dashboard for quick understanding and better decisions.</p>
+            </div>
+            <div class="preview-visual text-center">
+                <img src="dashboard-charts.jpeg" alt="Complete Dashboard Overview" class="full-preview-img">
+            </div>
+        </section>
+
+
+        <!-- 6. FINAL CTA -->
+        <section class="cta-section container" id="cta">
+            <div class="cta-content text-center">
+                <h2>Start building your dashboard</h2>
+                <div class="btn-wrapper" title="Coming soon">
+                    <a href="#" class="btn btn-primary btn-large">Get Started Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container footer">
+        <p>&copy; 2024 BentoDB. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
