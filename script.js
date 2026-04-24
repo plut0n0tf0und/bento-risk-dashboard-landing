@@ -1,12 +1,12 @@
 // Handle Sticky Storytelling Section
 const initStickyStorytelling = () => {
-  const triggers = document.querySelectorAll('.trigger');
+  const sections = document.querySelectorAll('.workflow-section');
   const menuItems = document.querySelectorAll('.menu-item');
   const visualImgs = document.querySelectorAll('.visual-img');
 
   const observerOptions = {
     threshold: 0.5,
-    rootMargin: '0px'
+    rootMargin: '0px 0px -20% 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -14,7 +14,7 @@ const initStickyStorytelling = () => {
       if (entry.isIntersecting) {
         const step = entry.target.dataset.step;
         
-        // Update menu items
+        // Update menu items (Descriptions will sync via .active class in CSS)
         menuItems.forEach(item => {
           item.classList.toggle('active', item.dataset.step === step);
         });
@@ -27,7 +27,7 @@ const initStickyStorytelling = () => {
     });
   }, observerOptions);
 
-  triggers.forEach(trigger => observer.observe(trigger));
+  sections.forEach(section => observer.observe(section));
 };
 
 // Global scroll animations
@@ -40,29 +40,26 @@ const observeSections = () => {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('section').forEach(section => observer.observe(section));
+  document.querySelectorAll('section:not(.workflow-section)').forEach(section => observer.observe(section));
 };
 
 // Smooth scroll for anchor links
 const handleSmoothScroll = () => {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('.menu-item').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || href.startsWith('#step')) {
-        // Special handling for sticky steps
-        e.preventDefault();
-        const targetId = href.startsWith('#step-') ? href : `#step-${this.dataset.step}`;
-        const target = document.querySelector(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-        return;
-      }
-      
       e.preventDefault();
-      const target = document.querySelector(href);
+      const step = this.dataset.step;
+      const targetId = {
+        '1': 'connect-section',
+        '2': 'design-section',
+        '3': 'map-section',
+        '4': 'name-section',
+        '5': 'dashboard-section'
+      }[step];
+
+      const target = document.getElementById(targetId);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
