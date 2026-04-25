@@ -156,6 +156,7 @@ h3 {
 .hero-content {
   max-width: 580px;
   z-index: 10;
+  transform: translateY(-30px);
 }
 
 h1 {
@@ -254,6 +255,7 @@ h1 {
   .hero-content {
     margin: 0 auto;
     order: 1; /* Headline, Subtext, CTA first */
+    transform: none;
   }
 
   .hero-visual {
