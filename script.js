@@ -1,5 +1,7 @@
 // Handle Sticky Storytelling Section
 const initStickyStorytelling = () => {
+  if (window.innerWidth <= 768) return;
+  
   const triggers = document.querySelectorAll('.trigger');
   const menuItems = document.querySelectorAll('.menu-item');
   const visualImgs = document.querySelectorAll('.visual-img');

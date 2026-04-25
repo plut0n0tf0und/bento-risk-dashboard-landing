@@ -44,7 +44,7 @@
                 <h2>How it works</h2>
             </div>
 
-            <div class="sticky-container">
+            <div class="sticky-container desktop-only">
                 <div class="container sticky-wrapper">
                     <!-- Left Menu -->
                     <div class="sticky-left">
@@ -52,37 +52,36 @@
                             <a href="#step-1" class="menu-item active" data-step="1">
                                 <span class="dot"></span>
                                 <div class="menu-content">
-                                    <span class="title">Integrate</span>
-                                    <p class="description">Connect your sales, inventory, and ops data in minutes.</p>
+                                    <span class="title">Connect</span>
+                                    <p class="description">Connect your data sources in seconds.</p>
                                 </div>
                             </a>
                             <a href="#step-2" class="menu-item" data-step="2">
                                 <span class="dot"></span>
                                 <div class="menu-content">
-                                    <span class="title">Monitor</span>
-                                    <p class="description">Continuously track patterns and behavior in real time.</p>
+                                    <span class="title">Design</span>
+                                    <p class="description">Choose the best visualization for your metrics.</p>
                                 </div>
                             </a>
                             <a href="#step-3" class="menu-item" data-step="3">
                                 <span class="dot"></span>
                                 <div class="menu-content">
-                                    <span class="title">Detect</span>
-                                    <p class="description">Identify anomalies like demand spikes or stock risks early.
-                                    </p>
+                                    <span class="title">Map</span>
+                                    <p class="description">Map your data fields to chart axes.</p>
                                 </div>
                             </a>
                             <a href="#step-4" class="menu-item" data-step="4">
                                 <span class="dot"></span>
                                 <div class="menu-content">
-                                    <span class="title">Alert</span>
-                                    <p class="description">Get clear, actionable insights instead of raw data.</p>
+                                    <span class="title">Name</span>
+                                    <p class="description">Give your insight a clear name and context.</p>
                                 </div>
                             </a>
                             <a href="#step-5" class="menu-item" data-step="5">
                                 <span class="dot"></span>
                                 <div class="menu-content">
-                                    <span class="title">Act</span>
-                                    <p class="description">Take immediate steps to prevent loss and stay ahead.</p>
+                                    <span class="title">Dashboard</span>
+                                    <p class="description">Assemble everything into a powerful dashboard.</p>
                                 </div>
                             </a>
                         </div>
@@ -91,11 +90,11 @@
                     <!-- Right Visuals -->
                     <div class="sticky-right">
                         <div class="visual-container">
-                            <img src="integrate-1.png" alt="Integrate" class="visual-img active" data-step="1">
-                            <img src="monitor-2.png" alt="Monitor" class="visual-img" data-step="2">
-                            <img src="detect-3.png" alt="Detect" class="visual-img" data-step="3">
-                            <img src="alert-4.png" alt="Alert" class="visual-img" data-step="4">
-                            <img src="act-5.png" alt="Act" class="visual-img" data-step="5">
+                            <img src="integrate-1.png" alt="Connect" class="visual-img active" data-step="1">
+                            <img src="monitor-2.png" alt="Design" class="visual-img" data-step="2">
+                            <img src="detect-3.png" alt="Map" class="visual-img" data-step="3">
+                            <img src="alert-4.png" alt="Name" class="visual-img" data-step="4">
+                            <img src="act-5.png" alt="Dashboard" class="visual-img" data-step="5">
                         </div>
                     </div>
                 </div>
@@ -109,6 +108,40 @@
                     <div id="step-5" class="trigger" data-step="5"></div>
                 </div>
             </div>
+
+            <!-- Mobile Stacked Layout (≤768px) -->
+            <div class="mobile-workflow container">
+                <div class="mobile-step">
+                    <img src="integrate-1.png" alt="Connect" class="mobile-step-img">
+                    <span class="mobile-step-label">STEP 01</span>
+                    <h3 class="mobile-step-title">Connect</h3>
+                    <p class="mobile-step-desc">Connect your data sources in seconds.</p>
+                </div>
+                <div class="mobile-step">
+                    <img src="monitor-2.png" alt="Design" class="mobile-step-img">
+                    <span class="mobile-step-label">STEP 02</span>
+                    <h3 class="mobile-step-title">Design</h3>
+                    <p class="mobile-step-desc">Choose the best visualization for your metrics.</p>
+                </div>
+                <div class="mobile-step">
+                    <img src="detect-3.png" alt="Map" class="mobile-step-img">
+                    <span class="mobile-step-label">STEP 03</span>
+                    <h3 class="mobile-step-title">Map</h3>
+                    <p class="mobile-step-desc">Map your data fields to chart axes.</p>
+                </div>
+                <div class="mobile-step">
+                    <img src="alert-4.png" alt="Name" class="mobile-step-img">
+                    <span class="mobile-step-label">STEP 04</span>
+                    <h3 class="mobile-step-title">Name</h3>
+                    <p class="mobile-step-desc">Give your insight a clear name and context.</p>
+                </div>
+                <div class="mobile-step">
+                    <img src="act-5.png" alt="Dashboard" class="mobile-step-img">
+                    <span class="mobile-step-label">STEP 05</span>
+                    <h3 class="mobile-step-title">Dashboard</h3>
+                    <p class="mobile-step-desc">Assemble everything into a powerful dashboard.</p>
+                </div>
+            </div>
         </section>
 
 
@@ -120,7 +153,10 @@
                     dashboard for quick understanding and better decisions.</p>
             </div>
             <div class="preview-visual text-center">
-                <img src="dashboard-hero-gpt.png" alt="Complete Dashboard Overview" class="full-preview-img">
+                <picture>
+                    <source srcset="dashboard-hero-gpt-mobile.png" media="(max-width: 768px)">
+                    <img src="dashboard-hero-gpt.png" alt="Complete Dashboard Overview" class="full-preview-img">
+                </picture>
             </div>
         </section>
 
