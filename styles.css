@@ -170,6 +170,7 @@ h3 {
   align-items: flex-start;
   padding-top: 120px; /* Vertically align slightly above center */
   gap: 60px;
+  overflow: hidden; /* Contain glow here instead of visual container to prevent clipping image */
 }
 
 .hero-content {
@@ -209,7 +210,7 @@ h1 {
   align-items: center; /* CENTERED RELATIVE TO HEADLINE */
   min-height: auto;
   z-index: 5;
-  overflow: hidden; /* Fix: Contained glow to prevent horizontal scroll */
+  overflow: visible; /* Allow floating image to breathe */
   padding-right: 0;
 }
 
