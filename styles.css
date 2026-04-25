@@ -22,6 +22,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
   background-color: var(--bg);
@@ -32,8 +38,18 @@ body {
   background-color: var(--bg);
   color: var(--text-main);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip; /* Modern fix: hides overflow without breaking sticky */
+  position: relative;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Debug Outline - Remove after fixing */
+/* * { outline: 1px solid red; } */
 
 .container {
   max-width: var(--max-width);
@@ -61,8 +77,11 @@ body {
 section {
   padding: 120px 0;
   opacity: 0;
-  transform: translateY(10px);
-  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 section.visible {
@@ -190,20 +209,20 @@ h1 {
   align-items: center; /* CENTERED RELATIVE TO HEADLINE */
   min-height: auto;
   z-index: 5;
-  overflow: visible;
-  padding-right: 20px; /* Counter-balance for negative margin */
+  overflow: hidden; /* Fix: Contained glow to prevent horizontal scroll */
+  padding-right: 0;
 }
 
 /* Hero Glow */
 .hero-visual::before {
   content: '';
   position: absolute;
-  width: 150%;
-  height: 150%;
+  width: 100%; /* Constrained to parent width */
+  height: 100%;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 70%);
   z-index: 1;
-  top: -25%;
-  left: -25%;
+  top: 0;
+  left: 0;
   pointer-events: none;
 }
 
@@ -221,6 +240,8 @@ h1 {
   position: relative;
   margin-right: -20px;
   animation: floatElevated 6s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 @keyframes floatElevated {
@@ -239,10 +260,9 @@ h1 {
   }
 }
 
-/* Mobile & Small Tablet Responsive */
-@media (max-width: 968px) {
+@media (max-width: 1024px) {
   .container {
-    padding: 0 20px; /* Reduced side padding */
+    padding: 0 24px;
   }
 
   .hero {
@@ -262,6 +282,19 @@ h1 {
     justify-content: center;
     order: 2; /* Image last on mobile */
     margin-top: 32px;
+    padding-right: 0;
+  }
+
+  .img-hero-main {
+    margin-right: 0;
+    max-width: 100%;
+    animation: floatElevatedMobile 6s ease-in-out infinite;
+  }
+
+  @keyframes floatElevatedMobile {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
   }
 
   .floating-ui {
@@ -280,6 +313,15 @@ h1 {
   }
 }
 
+/* Mobile-Specific Glow Override (≤768px) */
+@media (max-width: 768px) {
+  .hero-visual::before {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+}
+
 /* Global Hidden Classes */
 .mobile-workflow { display: none; }
 
@@ -289,6 +331,8 @@ h1 {
   position: relative;
   scroll-snap-type: y proximity;
   padding: 80px 0; /* Reduced top/bottom padding */
+  transform: none !important; /* CRITICAL: Transforms break position: sticky */
+  opacity: 1 !important; /* Ensure it's visible without needing the section animation */
 }
 
 .sticky-container {
@@ -424,8 +468,10 @@ h1 {
   object-fit: contain;
   opacity: 0;
   transform: translateY(10px) scale(0.98);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+              transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
+  will-change: transform, opacity;
 }
 
 .visual-img.active {
@@ -497,8 +543,45 @@ h1 {
 
 /* Mobile Stacked Flow (≤768px) */
 @media (max-width: 768px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
   .desktop-only {
     display: none !important;
+  }
+
+  section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  h1, h2 {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 12px !important;
+  }
+
+  .subtext {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #A1A7B3 !important;
+    max-width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-content {
+    text-align: center;
+    transform: none !important;
+  }
+
+  .hero-actions {
+    margin-top: 12px;
   }
 
   .mobile-workflow {
